@@ -12,15 +12,19 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
 
     function getUserAuthenticationAndValidate( user ) {
         console.log("Inside user Auth");
+
         $http.post('serverCode/getUserAuthentication.php?user='+user).success(function (user_authentication) {
             console.log("Inside  Function Auth");
             var success = false;
             //$scope.message = user_authentication;
 
             if (user_authentication.length > 0){
+                // Start Session ...
+                startSession(user_authentication[0]);
                 console.log("after data retrieved Auth" + md5.createHash($scope.login.password));
                 if (user_authentication[0].password == md5.createHash($scope.login.password)) {
                     console.log("Password Matched");
+                    console.log($scope.login.dob);
                     success = true;
                     $scope.message = "";
                   if(user_authentication[0].designation == "Admin")
@@ -45,6 +49,8 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
                     $scope.message = "Incorrect Email/Password combination";
                     console.log("Password not Matched");
                 }
+
+
             }else{
              $scope.message = "User not found";
             }
@@ -130,9 +136,10 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
         }
         if($scope.correctID &&  $scope.password_length && $scope.login.good_password_style1 && $scope.password_match1)
         {
+
                 var password = md5.createHash($scope.login.password);
                 var name = $scope.login.First_Name.concat( " " + $scope.login.Last_Name);
-                $http.post('serverCode/createUser.php?user_name='+$scope.login.user_name+'&password='+ password + '&name=' + name +'&age='+ $scope.login.age + '&gender=' +$scope.login.gender + '&designation=' + $scope.login.designation + '&designationID=' + $scope.login.designationID).success(function(){
+                $http.post('serverCode/createUser.php?user_name='+$scope.login.user_name+'&password='+ password + '&name=' + name +'&dob='+ $scope.login.dob + '&gender=' +$scope.login.gender + '&designation=' + $scope.login.designation + '&designationID=' + $scope.login.designationID).success(function(){
                     $location.path("/login");
                 })
         }
@@ -167,6 +174,19 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
 
     };
 
+    function startSession(user){
+        var new_session = uuid2.newuuid();
+            console.log("Start Sessions");
+            $rootScope.session = {
+                session_id: new_session,
+                user_name: user.email,
+                access: user.designation
+            };
+            $cookieStore.put("session", $rootScope.session );
+
+
+
+    }
 
     $scope.validateLogin = function() {
         getUserAuthenticationAndValidate($scope.login.user_name)

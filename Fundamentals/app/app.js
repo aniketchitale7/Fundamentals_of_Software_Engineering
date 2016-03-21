@@ -3,10 +3,10 @@
  */
 var app = angular.module("app", ['angular-md5', 'ngRoute', 'angularUUID2', 'ngCookies'])
 
-app.config(['$routeProvider',
-      function ($routeProvider) {
+app.config(['$routeProvider','$sceProvider',
+    function ($routeProvider, $sceProvider) {
 
-
+          $sceProvider.enabled(false);
         $routeProvider.
             when('/login', {
               title: 'Login',
@@ -22,20 +22,20 @@ app.config(['$routeProvider',
 
             .when('/userPage', {
                 title: 'userPage',
-                templateUrl: 'htmlPages/userPage.html',
-                controller: 'loginCtrl'
+                templateUrl: 'htmlPages/userPage1.html',
+                controller: 'userPageCtrl'
             })
 
             .when('/managerPage', {
                 title: 'managerPage',
                 templateUrl: 'htmlPages/managerPage.html',
-                controller: 'loginCtrl'
+                controller: 'managerPageCtrl'
             })
 
             .when('/adminPage', {
                 title: 'adminPage',
                 templateUrl: 'htmlPages/adminPage.html',
-                controller: 'loginCtrl'
+                controller: 'adminPageCtrl'
             })
 
             .when('/create_account', {

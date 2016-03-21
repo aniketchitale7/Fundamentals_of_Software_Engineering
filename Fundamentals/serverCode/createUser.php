@@ -1,26 +1,42 @@
 <?php
 require_once '../includes/db.php'; // The mysql database connection script
 echo"Hello World";
+print("Hello World");
 if(isset($_GET['user_name']) && isset($_GET['password']))
 {
     $user_name = $_GET['user_name'];
     $password = $_GET['password'];
     $name = $_GET['name'];
-    $age = $_GET['age'];
+    $dob = $_GET['dob'];
     $gender = $_GET['gender'];
     $designation = $_GET['designation'];
     $designationID = $_GET['designationID'];
 
+    echo(""+$dob);
 
-
-    $query="INSERT INTO login(email,password,name,age,gender,designation,designationId)  VALUES ('$user_name', '$password', '$name' ,'$age', '$gender' , '$designation','$designationId')";
+    $query="INSERT INTO login(email,password,name,dateofbirth,gender,designation,designationId)  VALUES ('$user_name', '$password', '$name' ,'$dob', '$gender' , '$designation','$designationId')";
     $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
     $result = $mysqli->affected_rows;
 
-    // Attempted mail. returning the results of the email sent off
+     // send email for account verification
+        $to = $user_name;
+        $subject = " Account Verification";
+        $message = "Thanks for signing up ".$user_name."! Please click on the link below to verify your account.\r\nhttp://localhost:8888/login/verify.php?id=".$email;
+        $headers = "From: aniketchitale7@gmail.com" . "\r\n" .
+        "Reply-To: aniketchitale7@gmail.com" . "\r\n" .
+        "X-Mailer: PHP/" . phpversion();
 
-    $result = $mail($user_name, "Congratulations!", "Hello,\r\n\r\nThank you for creating your account with us!\r\n\r\n-The OCTA team", 'From: octa@gmail.com');
+        $retval = mail($to, $subject, $message, $headers);
+        if($retval !== true) {
+            echo 'Opps! There was an error sending your account verification email, please contact our support staff at aniketchitale7@gmail.com.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            echo "<script>alert('Email not sent an error occured.')</script>";
 
-    echo $json_response = json_encode($result);
+        } else {
+            echo "<script>alert('Email sent! Please check your email and activate your account.')</script>";
+            echo "<script>window.location = 'http://localhost:8888/login/login.html'</script>";
+        }
+
+
 }
 ?>
