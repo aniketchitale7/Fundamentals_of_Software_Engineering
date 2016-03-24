@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2016 at 04:00 PM
+-- Generation Time: Mar 23, 2016 at 12:20 AM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -19,6 +19,45 @@ SET time_zone = "+00:00";
 --
 -- Database: `fundamentals`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `C_Id` varchar(10) NOT NULL,
+  `C_Name` varchar(100) NOT NULL,
+  PRIMARY KEY (`C_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`C_Id`, `C_Name`) VALUES
+('C0001', 'Electronics'),
+('C0002', 'Furniture');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_subcategory`
+--
+
+CREATE TABLE IF NOT EXISTS `category_subcategory` (
+  `cat_Id` varchar(10) NOT NULL,
+  `sub_Id` varchar(10) NOT NULL,
+  PRIMARY KEY (`cat_Id`,`sub_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category_subcategory`
+--
+
+INSERT INTO `category_subcategory` (`cat_Id`, `sub_Id`) VALUES
+('C0001', 'SC0001');
 
 -- --------------------------------------------------------
 
@@ -58,6 +97,31 @@ INSERT INTO `login` (`email`, `password`, `name`, `dateofbirth`, `gender`, `desi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE IF NOT EXISTS `product` (
+  `P_Id` varchar(10) NOT NULL,
+  `P_CategoryId` varchar(50) NOT NULL,
+  `P_SubCategoryId` varchar(50) NOT NULL,
+  `P_Supplier` varchar(50) NOT NULL,
+  `P_Quantity` varchar(10) NOT NULL,
+  `P_Price` varchar(10) NOT NULL,
+  `P_Description` varchar(1000) NOT NULL,
+  PRIMARY KEY (`P_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`P_Id`, `P_CategoryId`, `P_SubCategoryId`, `P_Supplier`, `P_Quantity`, `P_Price`, `P_Description`) VALUES
+('P0001', 'C0001', 'SC0001', 'S0001', '5', '1000', 'Black 17 inch Laptop'),
+('P0002', 'C0001', 'SC0002', 'S0002', '10', '500', 'Desktops');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -86,6 +150,63 @@ INSERT INTO `sessions` (`last_activity`, `session_id`) VALUES
 ('10', '5fe9ffb3-3ece-42fc-840f-0b57998725c7'),
 ('10', '0a86ef79-3b96-4204-9ce2-196769846d21'),
 ('11', 'b9479e70-40de-412a-a833-9f4d922620c8');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategory`
+--
+
+CREATE TABLE IF NOT EXISTS `subcategory` (
+  `Sc_Id` varchar(10) NOT NULL,
+  `Sc_Name` varchar(100) NOT NULL,
+  PRIMARY KEY (`Sc_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subcategory`
+--
+
+INSERT INTO `subcategory` (`Sc_Id`, `Sc_Name`) VALUES
+('SC0001', 'Laptops');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategory_supplier`
+--
+
+CREATE TABLE IF NOT EXISTS `subcategory_supplier` (
+  `sc_Id` varchar(10) NOT NULL,
+  `supplier_Id` varchar(10) NOT NULL,
+  PRIMARY KEY (`sc_Id`,`supplier_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subcategory_supplier`
+--
+
+INSERT INTO `subcategory_supplier` (`sc_Id`, `supplier_Id`) VALUES
+('SC0001', 'S0001');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `S_Id` varchar(10) NOT NULL,
+  `S_Name` varchar(100) NOT NULL,
+  PRIMARY KEY (`S_Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`S_Id`, `S_Name`) VALUES
+('S0001', 'Dell');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
