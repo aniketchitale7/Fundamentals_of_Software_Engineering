@@ -43,6 +43,11 @@ app.config(['$routeProvider','$sceProvider',
                 templateUrl: 'htmlPages/create_account.html',
                 controller: 'loginCtrl'
             })
+            .when('/cart', {
+                title: 'cart',
+                templateUrl: 'htmlPages/cart.html',
+                controller: 'userPageCtrl'
+            })
 
 
             .otherwise({

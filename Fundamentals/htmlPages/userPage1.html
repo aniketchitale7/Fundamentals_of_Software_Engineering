@@ -23,6 +23,7 @@
 <BODY onload="noBack();"
       onpageshow="if (event.persisted) noBack();" onunload="">
 <body>
+<div ng-controller="userPageCtrl">
 <div class="wrap">
     <div id="header">
         <div id="top">
@@ -114,6 +115,16 @@
                 <p>Hi !!</p>
 
             </div>
+            <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+                <div class="checkbox">
+                        <label>
+                            <!-- <input type="checkbox"> Remember me <br/> -->
+                            <a ng-click="redirectToCart()">Checkout</a>
+                        </label>
+                </div>
+            </div>
+        </div>
         </div>
         <div class="clear"></div>
     </div>
@@ -127,6 +138,6 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>

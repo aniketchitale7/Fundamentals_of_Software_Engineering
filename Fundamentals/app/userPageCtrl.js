@@ -8,4 +8,8 @@ app.controller("userPageCtrl", function($scope, $rootScope, $http, $location, $c
 
     $scope.access = $rootScope.session.access;
 
+    $scope.redirectToCart = function(){
+        $location.path('/cart');
+    }
+
 });
