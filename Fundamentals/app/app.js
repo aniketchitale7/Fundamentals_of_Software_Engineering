@@ -1,7 +1,7 @@
 /**
  * Created by Aniket
  */
-var app = angular.module("app", ['angular-md5', 'ngRoute', 'angularUUID2', 'ngCookies'])
+var app = angular.module("app", ['angular-md5', 'ngRoute', 'angularUUID2', 'ngCookies' , 'angularUtils.directives.dirPagination' , 'ngCart'])
 
 app.config(['$routeProvider','$sceProvider',
     function ($routeProvider, $sceProvider) {
@@ -23,7 +23,18 @@ app.config(['$routeProvider','$sceProvider',
             .when('/userPage', {
                 title: 'userPage',
                 templateUrl: 'htmlPages/userPage1.html',
-                controller: 'userPageCtrl'
+                controller: 'userPageCtrl1'
+            })
+
+            .when('/orderPage', {
+                title: 'orderPage',
+                templateUrl: 'htmlPages/userPage.html',
+                controller: 'userPageCtrl1'
+            })
+            .when('/addOrder', {
+                title: 'orderPage',
+                templateUrl: 'htmlPages/addItems.html',
+                controller: 'managerPageCtrl'
             })
 
             .when('/managerPage', {
