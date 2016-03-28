@@ -36,7 +36,7 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
                   else if(user_authentication[0].designation == "Manager")
                   {
                       console.log("Manager" + user_authentication[0].designation );
-                      $window.location.href = 'htmlPages/managerPage.html';
+                      $location.path('/managerPage');
                   }
                   else
                   {
