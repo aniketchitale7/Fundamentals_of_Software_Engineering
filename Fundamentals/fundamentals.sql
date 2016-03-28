@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2016 at 12:20 AM
+-- Generation Time: Mar 28, 2016 at 02:53 AM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -92,7 +92,8 @@ INSERT INTO `login` (`email`, `password`, `name`, `dateofbirth`, `gender`, `desi
 ('aasda@gmail.com', 'd9f6e636e369552839e7bb8057aeb8da', 'Adad asdasdasd', '0000-00-00', 'Male', 'User', ''),
 ('ak@gmail.com', 'bc9be5bb0291dbc10dc1689c30cf0fe1', 'ak aa', '0000-00-00', 'Male', 'User', ''),
 ('aaa@gmail.com', 'd9f6e636e369552839e7bb8057aeb8da', 'Ann asdsa', '0000-00-00', 'Male', 'User', ''),
-('arina@gmail.com', '1404ee74dc01b81ecbd3f87587aaf64d', 'Arina Grande', '2016-03-22', 'Female', 'User', '');
+('arina@gmail.com', '1404ee74dc01b81ecbd3f87587aaf64d', 'Arina Grande', '2016-03-22', 'Female', 'User', ''),
+('gracern@gmail.com', '726c0bcffcce2008a046c84a729c95b8', 'Gracw Rein', '2016-03-15', 'Female', 'Manager', '');
 
 -- --------------------------------------------------------
 
@@ -118,6 +119,38 @@ CREATE TABLE IF NOT EXISTS `product` (
 INSERT INTO `product` (`P_Id`, `P_CategoryId`, `P_SubCategoryId`, `P_Supplier`, `P_Quantity`, `P_Price`, `P_Description`) VALUES
 ('P0001', 'C0001', 'SC0001', 'S0001', '5', '1000', 'Black 17 inch Laptop'),
 ('P0002', 'C0001', 'SC0002', 'S0002', '10', '500', 'Desktops');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product1`
+--
+
+CREATE TABLE IF NOT EXISTS `product1` (
+  `productId` varchar(100) NOT NULL,
+  `productName` varchar(100) NOT NULL,
+  `productCategory` varchar(100) NOT NULL,
+  `productSubcategory` varchar(100) NOT NULL,
+  `productVendor` varchar(100) NOT NULL,
+  `productQuantity` varchar(100) NOT NULL,
+  `productPrice` varchar(100) NOT NULL,
+  `productDescription` varchar(1000) NOT NULL,
+  PRIMARY KEY (`productId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product1`
+--
+
+INSERT INTO `product1` (`productId`, `productName`, `productCategory`, `productSubcategory`, `productVendor`, `productQuantity`, `productPrice`, `productDescription`) VALUES
+('p0001', 'dell laptops', 'electronics', 'computers', 'dell', '10', '500', 'black dell laptop'),
+('p0002', 'dell laptops', 'electronics', 'computers', 'dell', '10', '500', 'black dell laptop'),
+('p0003', 'Apple laptops', 'electronics', 'computers', 'Apple', '20', '1000', 'white Apple laptop'),
+('p0004', 'chair', 'electronics', 'furniture', 'steller', '100', '50', 'cusion chairs'),
+('p0005', 'dell chargers', 'electronics', 'computers', 'dell', '10', '50', 'black dell xperia chargers'),
+('p0006', 'Microsoft word', 'electronics', 'softwares', 'Microsoft', '100', '50', 'Microsoft word licences'),
+('p0007', 'Hp Desktop', 'Electronics', 'Computers', 'HP', '10', '300', 'old Desktop'),
+('p0008', 'grabage Trash', 'Furniture', 'Trashcan', 'toter', '10', '10', 'Old');
 
 -- --------------------------------------------------------
 
