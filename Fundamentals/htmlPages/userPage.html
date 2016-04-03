@@ -66,7 +66,7 @@
                         <td>{{user.productPrice}}</td>
                         <td>{{user.productDescription}}</td>
                         <!--<td><input type ="button" value ="Add to Cart"  ng-click="ngCart.addItem(user.productID)"/></td> -->
-                      <td>  <ngcart-addtocart id="{{user.productId}}" name="{{user.productName}}" price="{{user.productPrice}}" quantity="{{user.productQuantity}}"> Add to Cart</ngcart-addtocart> </td>
+                      <td>  <ngcart-addtocart id="{{user.productId}}" name="{{user.productName}}" price="{{user.productPrice}}" quantity="{{user.productQuantity}} " quantityMax = "{{user.productQuantity}} "> Add to Cart</ngcart-addtocart> </td>
                     </tr>
                     </tbody>
                 </table>
