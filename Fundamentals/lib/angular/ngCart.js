@@ -201,12 +201,14 @@ angular.module('ngCart', ['ngCart.directives'])
 
     .factory('ngCartItem', ['$rootScope', '$log', function ($rootScope, $log) {
 
+
         var item = function (id, name, price, quantity, data) {
             this.setId(id);
             this.setName(name);
             this.setPrice(price);
             this.setQuantity(quantity);
             this.setData(data);
+            this.setMaxQuantity(quantity);
         };
 
 
@@ -221,6 +223,13 @@ angular.module('ngCart', ['ngCart.directives'])
             return this._id;
         };
 
+
+        item.prototype.setMaxQuantity = function(quantity){
+            if (quantity)  this._maxQuantity = quantity;
+            else {
+                $log.error('A max quantity must be provided');
+            }
+        };
 
         item.prototype.setName = function(name){
             if (name)  this._name = name;
@@ -253,9 +262,16 @@ angular.module('ngCart', ['ngCart.directives'])
 
 
             var quantityInt = parseInt(quantity);
+
             if (quantityInt % 1 === 0){
-                if (relative === true){
-                    this._quantity  += quantityInt;
+                if (relative === true ){
+
+                      if(this._quantity < this._maxQuantity || quantityInt == -1)
+                      {
+                          this._quantity  += quantityInt;
+                      }
+
+
                 } else {
                     this._quantity = quantityInt;
                 }
