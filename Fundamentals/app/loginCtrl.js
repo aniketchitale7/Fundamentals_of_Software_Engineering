@@ -180,7 +180,9 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
             $rootScope.session = {
                 session_id: new_session,
                 user_name: user.email,
-                access: user.designation
+                access: user.designationId ,
+                designation_Id: user.designation
+
             };
             $cookieStore.put("session", $rootScope.session );
 
