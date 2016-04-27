@@ -26,6 +26,18 @@ app.config(['$routeProvider','$sceProvider',
                 controller: 'userPageCtrl1'
             })
 
+            .when('/returnPage', {
+                title: 'userPage',
+                templateUrl: 'htmlPages/returnPage.html',
+                controller: 'userPageCtrl1'
+            })
+
+            .when('/recommendation', {
+                title: 'userPage',
+                templateUrl: 'htmlPages/recommendation.html',
+                controller: 'userPageCtrl1'
+            })
+
             .when('/orderPage', {
                 title: 'orderPage',
                 templateUrl: 'htmlPages/userPage.html',
@@ -45,7 +57,19 @@ app.config(['$routeProvider','$sceProvider',
 
             .when('/adminPage', {
                 title: 'adminPage',
-                templateUrl: 'htmlPages/adminPage.html',
+                templateUrl: 'htmlPages/admin.html',
+                controller: 'adminPageCtrl'
+            })
+
+            .when('/makeAdmin', {
+                title: 'adminPage',
+                templateUrl: 'htmlPages/makeAdmin.html',
+                controller: 'adminPageCtrl'
+            })
+
+            .when('/authorizeManager', {
+                title: 'adminPage',
+                templateUrl: 'htmlPages/AuthorizeManager.html',
                 controller: 'adminPageCtrl'
             })
 

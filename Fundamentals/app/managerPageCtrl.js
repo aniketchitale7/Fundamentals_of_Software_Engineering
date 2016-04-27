@@ -9,14 +9,23 @@ app.controller("managerPageCtrl", function($scope, $rootScope, $http, $location,
     $scope.name= $scope.user_name.substr(0, $scope.user_name.indexOf('@'));
 
     $scope.redirectToOrders = function(){
-        $location.path('/addOrder');
-    }
+        if($scope.access == "Authorized") {
+            $location.path('/addOrder');
+        }
+        else
+            {
+                $scope.message = "Not Authorized to add Products. Please send a email to admin."
+            }
+
+        }
 
     $scope.addOrders = function(){
 
             $http.post('serverCode/addOrders.php?productId='+$scope.input.productIds+'&productName='+ $scope.input.productName + '&productCategory=' + $scope.input.productCategory +'&productSubCategory='+ $scope.input.productSubCategory + '&productVendor=' +$scope.input.productVendor + '&productQuantity=' + $scope.input.productQuantity + '&productPrice=' + $scope.input.productPrice + '&productDescription=' + $scope.input.productDescription).success(function(){
                 $location.path("/managerPage");
             })
+
+
 
 
     };

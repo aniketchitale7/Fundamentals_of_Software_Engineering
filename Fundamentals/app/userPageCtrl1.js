@@ -2,17 +2,23 @@
 /**
  * Created by Aniket
  */
-app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $cookieStore , ngCart){
+app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $cookieStore , ngCart , $routeParams){
 
     $scope.users = []; //declare an empty array
     $scope.input = [];
+     $scope.param1= $routeParams.param;
     $scope.user_name = $rootScope.session.user_name;
     $scope.name= $scope.user_name.substr(0, $scope.user_name.indexOf('@'));
+
     var catArray = {};
 
     $scope.access = $rootScope.session.access;
-    $http.get("serverCode/getProducts.php").success(function(response){
+    $http.get("serverCode/getProducts.php?").success(function(response){
         $scope.users = response;  //ajax request to fetch data into $scope.data
+    });
+
+    $http.get('serverCode/getTransactions.php?username='+ $scope.user_name).success(function(response){
+        $scope.return_items = response;  //ajax request to fetch data into $scope.data
     });
     ngCart.setTaxRate(7.5);
     ngCart.setShipping(2.99);
@@ -26,6 +32,15 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
         if($scope.summary.totalCost == $scope.input.confirmPrice)
         {
             $scope.orderPlace = "OrderPlaced"
+           var data = JSON.stringify($scope.summary);
+
+            // Code to save summary in database.
+            $http.post('serverCode/addTransactions.php?summary='+data + '&username='+ $scope.user_name).success(function(){
+                console.log("Order Placed" + $scope.summary.items);
+                alert("Thank you Order Placed");
+                $location.path('/userPage');
+                });
+
         }
         else {
             $scope.orderPlace = "Incorrect Value Entered"
@@ -34,10 +49,42 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
        // Post your cart to your resource
         //$http.post('cart/', ngCart.toObject());
     }
+
+    $scope.returnItems = function() {
+        $scope.return_summary = ngCart.toObject();
+
+            $scope.orderPlace = "OrderPlaced"
+            var data = JSON.stringify($scope.return_summary);
+
+            // Code to save summary in database.
+           $http.post('serverCode/addReturnItems.php?summary='+data + '&username='+ $scope.user_name).success(function(response){
+          $scope.recommendation_items = response ;
+
+               if($scope.recommendation_items == null)
+               {
+                   alert("Items placed for return");
+                   $location.path('/userPage');
+               }
+                else
+               {
+
+                   alert("This Item is not Available, Please select a recommendation");
+                   $location.path('/recommendation').search({param: $scope.recommendation_items});
+
+               }
+
+            });
+
+    }
+
     $scope.redirectToCart = function(){
         $location.path('/orderPage');
     }
 
+
+    $scope.redirectToReturn = function(){
+        $location.path('/returnPage');
+    }
 
 
     $scope.sort = function(keyname){
