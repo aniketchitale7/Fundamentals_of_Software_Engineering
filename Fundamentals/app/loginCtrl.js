@@ -57,6 +57,8 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
         });
     }
 
+
+
     $scope.redirectToCreateAccountPage = function(){
         $location.path('/create_account');
     };
