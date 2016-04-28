@@ -15,11 +15,6 @@
                 <h2 id="tables"> Welcome {{name}}</h2>
             </div>
             <div class="bs-component">
-                <div class="alert alert-info">
-                    <p>Sort key: {{sortKey}}</p>
-                    <p>Reverse: {{reverse}}</p>
-                    <p>Search String : {{search}}</p>
-                </div>
                 <form class="form-inline">
                     <div class="form-group">
                         <label >Search</label>
@@ -65,7 +60,6 @@
                         <td>{{user.productQuantity}}</td>
                         <td>{{user.productPrice}}</td>
                         <td>{{user.productDescription}}</td>
-                        <!--<td><input type ="button" value ="Add to Cart"  ng-click="ngCart.addItem(user.productID)"/></td> -->
                       <td>  <ngcart-addtocart id="{{user.productId}}" name="{{user.productName}}" price="{{user.productPrice}}" quantity="{{user.productQuantity}} " quantityMax = "{{user.productQuantity}} "> Add to Cart</ngcart-addtocart> </td>
                     </tr>
                     </tbody>
@@ -80,7 +74,7 @@
 
             <h3>Your Cart</h3>
 
-            <ngcart-cart></ngcart-cart>
+           <ngcart-cart></ngcart-cart>
             <h1>Confirm Total Price</h1>
             <input type = "text" name ="input" ng-model = "input.confirmPrice" placeholder="re-enter Total" />
             <a class="btn btn-lg btn-primary"  ng-click="checkout()">Place Order</a>

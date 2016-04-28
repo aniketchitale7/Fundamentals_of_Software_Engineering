@@ -12,14 +12,9 @@
     <div class="" style="margin-top:90px;">
         <div class="col-lg-8">
             <div class="page-header">
-                <h2 id="tables"> Recommendation Items {{param1}}</h2>
+                <h2 id="tables"> Recommendation Items for Replacement</h2>
             </div>
             <div class="bs-component">
-                <div class="alert alert-info">
-                    <p>Sort key: {{sortKey}}</p>
-                    <p>Reverse: {{reverse}}</p>
-                    <p>Search String : {{search}}</p>
-                </div>
                 <form class="form-inline">
                     <div class="form-group">
                         <label >Search</label>
@@ -66,7 +61,7 @@
                         <td>{{param.productPrice}}</td>
                         <td>{{param.productDescription}}</td>
                         <!--<td><input type ="button" value ="Add to Cart"  ng-click="ngCart.addItem(user.productID)"/></td> -->
-                        <td>  <ngcart-addtocart id="{{param1.productId}}" name="{{param1.productName}}" price="{{param1.productPrice}}" quantity="{{param1.productQuantity}} " quantityMax = "{{param1.productQuantity}} "> Add to Cart</ngcart-addtocart> </td>
+                        <td>  <ngcart-addtocart id="{{param.productId}}" name="{{param.productName}}" price="{{param.productPrice}}" quantity="{{param1[0].available}} " quantityMax = "{{param.productQuantity}} "> Add to Cart</ngcart-addtocart> </td>
                     </tr>
                     </tbody>
                 </table>
@@ -81,12 +76,12 @@
 
             <ngcart-cart></ngcart-cart>
 
-            <a class="btn btn-lg btn-primary" ng-click="returnItems()" >Return Items</a>
+            <a class="btn btn-lg btn-primary" ng-click="recommendationItem()" >Replacement Items Request</a>
 
             <hr/>
             <div ng-show="summary">
                 <h4>{{orderPlace}}</h4>
-                <h4>{{summary}}</h4>
+                <h4>{{returnRecommenndations}}</h4>
 
             </div>
         </div>
@@ -142,9 +137,9 @@
                 <td>{{ item.getId() }}</td>
                 <td>{{ item.getName() }}</td>
                 <td><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
-                          ng-click="item.setQuantity(-1, true)"></span>&nbsp;&nbsp;
-                    {{ item.getQuantity() | number }}&nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
+                          ng-click="item.setQuantity(0, true)"></span>&nbsp;&nbsp;
+                    {{item.getQuantity() | number }}&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(0, true)"></span></td>
             </tr>
             </tbody>
         </table>

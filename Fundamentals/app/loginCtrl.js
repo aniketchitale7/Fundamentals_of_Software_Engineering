@@ -188,6 +188,7 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
 
 
 
+
     }
 
     $scope.validateLogin = function() {

@@ -9,7 +9,7 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
      $scope.param1= $routeParams.param;
     $scope.user_name = $rootScope.session.user_name;
     $scope.name= $scope.user_name.substr(0, $scope.user_name.indexOf('@'));
-
+    ngCart.empty();
     var catArray = {};
 
     $scope.access = $rootScope.session.access;
@@ -38,6 +38,7 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
             $http.post('serverCode/addTransactions.php?summary='+data + '&username='+ $scope.user_name).success(function(){
                 console.log("Order Placed" + $scope.summary.items);
                 alert("Thank you Order Placed");
+
                 $location.path('/userPage');
                 });
 
@@ -62,7 +63,7 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
 
                if($scope.recommendation_items == null)
                {
-                   alert("Items placed for return");
+                   alert("Items placed for return. It would take 4-5 days for Delivery");
                    $location.path('/userPage');
                }
                 else
@@ -77,9 +78,30 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
 
     }
 
+    $scope.recommendationItem = function() {
+        //$scope.returnRecommenndations = ngCart.toObject();
+        alert("Item return request Placed");
+        $location.path('/userPage');
+
+       // $scope.orderPlace = "OrderPlaced"
+        //var data = JSON.stringify($scope.return_summary);
+    ///Save value to database
+        // Code to save summary in database.
+       // $http.post('serverCode/addReturnItems.php?summary='+data + '&username='+ $scope.user_name).success(function(response){
+
+       // });
+
+    }
+
     $scope.redirectToCart = function(){
         $location.path('/orderPage');
     }
+
+    $scope.logout = function(){
+        $cookieStore.remove("session");
+        $location.path('/');
+    }
+
 
 
     $scope.redirectToReturn = function(){

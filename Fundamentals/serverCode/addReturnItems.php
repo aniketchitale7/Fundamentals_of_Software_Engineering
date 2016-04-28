@@ -41,7 +41,7 @@ require_once '../includes/db.php'; // The mysql database connection script
                            if($nowAvailable < 0 )
                            {
 
-                          $query3 =  "select * from product1 p1 where p1.productSubcategory in (SELECT productSubcategory FROM product1 p1 WHERE p1.productId = 'p0001') and productQuantity > 0";
+                          $query3 =  "select * from product1 p1 where p1.productSubcategory in (SELECT productSubcategory FROM product1 p1 WHERE p1.productId = 'p0001') and productQuantity > -($nowAvailable) ";
                             $result = $mysqli->query($query3) or die($mysqli->error.__LINE__);
 
                              $arr = array();
@@ -52,7 +52,12 @@ require_once '../includes/db.php'; // The mysql database connection script
                                     }
 
                                     # JSON-encode the response
-                                    echo $json_response = json_encode($arr);
+                                      $arr[0]['available'] = -($nowAvailable);
+
+                                     $json_response = json_encode($arr);
+
+                                    echo $json_response;
+
                            }
                            else
                            {
