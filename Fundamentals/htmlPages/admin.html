@@ -54,8 +54,7 @@ $(function(){
 				</li>
 				<li class="upp"><a href="#">Manage Users</a>
 					<ul>
-						<li>&#8250; <a href="">Show all user</a></li>
-						<li>&#8250; <a href="">Delete user</a></li>
+						<li>&#8250; <a ng-click="showUsers()">Show Users</a></li>
 						<li>&#8250; <a ng-click="redirectTomakeAdmin()">Make Manager Admin</a></li>
 						<li>&#8250; <a ng-click="redirectToAuthorizeManager()">Validate Manager</a></li>
 						
@@ -63,8 +62,7 @@ $(function(){
 				</li>
 				<li class="upp"><a href="#">Settings</a>
 					<ul>
-						<li>&#8250; <a href="">Change password</a></li>
-						<li>&#8250; <a href="">Change settings</a></li>
+						<li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
 					</ul>
 				</li>
 			</ul>

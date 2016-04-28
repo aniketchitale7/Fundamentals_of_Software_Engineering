@@ -29,4 +29,9 @@ app.controller("managerPageCtrl", function($scope, $rootScope, $http, $location,
 
 
     };
+
+    $scope.updateInfo = function(){
+        $location.path('/userInfo');
+
+    }
 });

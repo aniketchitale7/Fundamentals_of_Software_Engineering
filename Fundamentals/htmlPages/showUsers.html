@@ -25,7 +25,7 @@
     <div id="header">
         <div id="top">
             <div class="left">
-                <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
+                <p>Welcome, <strong> {{user_name}} .</strong> [ <a href="logout.jsp">logout</a> ]</p>
             </div>
             <div class="right">
                 <div class="align-right">
@@ -33,28 +33,27 @@
                 </div>
             </div>
         </div>
-        <div id="nav" style="margin-top: 10px;">
+        <div id="nav">
             <ul>
-                <li class="upp"><a href="#">DashBoard1</a>
+                <li class="upp"><a href="#">DashBoard</a>
                     <ul>
-                        <li>&#8250; <a href="#">View Messages</a></li>
+                        <li>&#8250; <a href="">View Profile</a></li>
                         <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
-
-                    </ul   >
+                    </ul>
                 </li>
                 <li class="upp"><a href="#">Manage Supplies</a>
                     <ul>
-                        <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
-                        <li>&#8250; <a href="#">View supplies</a></li>
-                        <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
-
+                        <li>&#8250; <a href="">Order Supplies</a></li>
+                        <li>&#8250; <a href="">Add Supplies</a></li>
+                        <li>&#8250; <a href="">View supplies</a></li>
 
                     </ul>
                 </li>
-                <li class="upp"><a href="#">Users</a>
+                <li class="upp"><a href="#">Manage Users</a>
                     <ul>
-                        <li>&#8250; <a href="#">Show all uses</a></li>
-                        <li>&#8250; <a href="#">Delete user</a></li>
+                        <li>&#8250; <a ng-click="showUsers()">Show Users</a></li>
+                        <li>&#8250; <a ng-click="redirectTomakeAdmin()">Make Manager Admin</a></li>
+                        <li>&#8250; <a ng-click="redirectToAuthorizeManager()">Validate Manager</a></li>
 
                     </ul>
                 </li>
@@ -68,30 +67,28 @@
     </div>
 
     <div id="content">
-        <div id="sidebar">
-            <div class="box">
-                <div class="h_title">&#8250; DashBoard</div>
-                <ul id="home">
-                    <li class="b1"><a class="icon view_page" href="viewmessage.jsp">View messages</a></li>
-                    <li class="b2"><a class="icon report" href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+        <table>
+            <tr>
+                <th>USERS</th>
+            </tr>
+            <tr ng-repeat="z in users2">
+                <td>{{z.name}}</td>
+                <td>{{z.email}}</td>
+            </tr>
+        </table>
 
-                </ul>
-            </div>
+        <table>
+            <tr>
+                <th>MANAGERS</th>
+            </tr>
+            <tr ng-repeat="x in mans2">
+                <td>{{x.name}}</td>
+                <td>{{x.email}}</td>
+            </tr>
+        </table>
 
-        </div>
-        <div id="main">
-            <div class="clear"></div>
-            <div class="full_w">
-                <div class="h_title">Welcome {{name}} .</div>
-                <h1>Welcome {{name}} .</h1>
-                <p>Hi !!</p>
-                <div class="container">
-
-                </div>
-        </div>
     </div>
-        <div class="clear"></div>
-    </div>
+
 
     <div id="footer" style="position:absolute; bottom:0;">
         <div class="left">

@@ -26,6 +26,18 @@ app.config(['$routeProvider','$sceProvider',
                 controller: 'userPageCtrl1'
             })
 
+            .when('/userInfo', {
+                title: 'userPage',
+                templateUrl: 'htmlPages/userInfo.html',
+                controller: 'userPageCtrl1'
+            })
+
+            .when('/showUsers', {
+                title: 'showUsers',
+                templateUrl: 'htmlPages/showUsers.html',
+                controller: 'adminPageCtrl'
+            })
+
             .when('/returnPage', {
                 title: 'userPage',
                 templateUrl: 'htmlPages/returnPage.html',

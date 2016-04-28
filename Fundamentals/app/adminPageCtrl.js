@@ -9,7 +9,6 @@ app.controller("adminPageCtrl", function($scope, $rootScope, $http, $location, $
     $scope.access = $rootScope.session.access;
 
 
-
     $scope.redirectTomakeAdmin = function(){
         $location.path('/makeAdmin');
     }
@@ -34,6 +33,24 @@ app.controller("adminPageCtrl", function($scope, $rootScope, $http, $location, $
             $location.path('/adminPage');
         });
 
+    }
+
+    $scope.updateInfo = function(){
+        $location.path('/userInfo');
+
+    }
+
+    $http.get('serverCode/getUsers.php?').success(function(response){
+        $scope.users2 = response;  //ajax request to fetch data into $scope.data
+    })
+
+    $http.get('serverCode/getMans.php?').success(function(response){
+        $scope.mans2 = response;  //ajax request to fetch data into $scope.data
+    })
+
+    $scope.showUsers = function(){
+
+        $location.path('/showUsers');
     }
 
 });

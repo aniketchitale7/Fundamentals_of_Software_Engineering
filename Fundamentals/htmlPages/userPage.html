@@ -6,8 +6,54 @@
     <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/style1.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/navi.css" media="screen" />
 </head>
 <body>
+<div id="header">
+    <div id="top">
+        <div class="left">
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href="logout.jsp">logout</a> ]</p>
+        </div>
+        <div class="right">
+            <div class="align-right">
+
+            </div>
+        </div>
+    </div>
+    <div id="nav" style="margin-top: 10px;">
+        <ul>
+            <li class="upp"><a href="#">DashBoard1</a>
+                <ul>
+                    <li>&#8250; <a href="#">View Messages</a></li>
+                    <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                </ul   >
+            </li>
+            <li class="upp"><a href="#">Manage Supplies</a>
+                <ul>
+                    <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
+                    <li>&#8250; <a href="#">View supplies</a></li>
+                    <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
+
+
+                </ul>
+            </li>
+            <li class="upp"><a href="#">Users</a>
+                <ul>
+                    <li>&#8250; <a href="#">Show all uses</a></li>
+                    <li>&#8250; <a href="#">Delete user</a></li>
+
+                </ul>
+            </li>
+            <li class="upp"><a href="#">Settings</a>
+                <ul>
+                    <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 <div role="main" class="container theme-showcase">
     <div class="" style="margin-top:90px;">
         <div class="col-lg-8">
@@ -21,32 +67,33 @@
                         <input type="text" ng-model="search" class="form-control" placeholder="Search">
                     </div>
                 </form>
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" style="font-size: 14px;">
                     <thead>
+                    <col width="900" />
                     <tr>
                         <th ng-click="sort('productId')">Id
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        <!--    <span class="glyphicon sort-icon" ng-show="sortKey=='productId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
                         </th>
-                        <th ng-click="sort('productName')">Product Name
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        <th ng-click="sort('productName')">Product
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
                         </th>
                         <th ng-click="sort('productCategory')">Category
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productCategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productCategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
                         </th>
                         <th ng-click="sort('productSubcategory')">Subcategory
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productSubcategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productSubcategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
                         </th>
                         <th ng-click="sort('productVendor')">Vendors
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productVendor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productVendor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
                         </th>
                         <th ng-click="sort('productQuantity')">Quantity
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productQuantity'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productQuantity'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
                         </th>
                         <th ng-click="sort('productPrice')">Price
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productPrice'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productPrice'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
                         </th>
                         <th ng-click="sort('productDescription')">Description
-                            <span class="glyphicon sort-icon" ng-show="sortKey=='productDescription'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productDescription'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
                         </th>
                     </tr>
                     </thead>

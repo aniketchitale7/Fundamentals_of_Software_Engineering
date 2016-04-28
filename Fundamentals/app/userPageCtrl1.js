@@ -11,6 +11,22 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
     $scope.name= $scope.user_name.substr(0, $scope.user_name.indexOf('@'));
     ngCart.empty();
     var catArray = {};
+    $http.get('serverCode/getUserAuthentication.php?user='+ $scope.user_name).success(function(response){
+        $scope.userDetails = response;  //ajax request to fetch data into $scope.data
+    });
+
+    $scope.updateAccount = function(){
+        var fname = document.getElementById("FirstName").valueOf().value;
+        var lname = document.getElementById("Last_Name").valueOf().value;
+        var dob = document.getElementById("dob").valueOf().value;
+        var name = fname + " " + lname;
+        console.log(fname);
+        console.log(lname);
+        console.log(dob);
+        $http.post('serverCode/updateUser.php?user_name='+$scope.user_name+ '&name=' + name +'&dob='+ dob).success(function(){
+            $scope.updated = "Updated Information";
+        })
+    }
 
     $scope.access = $rootScope.session.access;
     $http.get("serverCode/getProducts.php?").success(function(response){
@@ -25,6 +41,11 @@ app.controller("userPageCtrl1", function($scope, $rootScope, $http, $location, $
     console.log ("Value of Ng Cart is " + ngCart);
 
     $scope.myVariable = "My Variable value";
+
+    $scope.updateInfo = function(){
+        $location.path('/userInfo');
+
+    }
 
     $scope.checkout = function() {
         $scope.summary = ngCart.toObject();
