@@ -22,50 +22,41 @@
 <body onload="noBack();"
       onpageshow="if (event.persisted) noBack();" onunload="">
 <div class="wrap">
-    <div id="header">
-        <div id="top">
-            <div class="left">
-                <p>Welcome, <strong> {{user_name}} .</strong> [ <a href="logout.jsp">logout</a> ]</p>
-            </div>
-            <div class="right">
-                <div class="align-right">
-
-                </div>
-            </div>
+    <div id="top">
+        <div class="middle">
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href="logout.jsp">logout</a> ]</p>
         </div>
-        <div id="nav">
-            <ul>
-                <li class="upp"><a href="#">DashBoard</a>
-                    <ul>
-                        <li>&#8250; <a href="">View Profile</a></li>
-                        <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
-                    </ul>
-                </li>
-                <li class="upp"><a href="#">Manage Supplies</a>
-                    <ul>
-                        <li>&#8250; <a href="">Order Supplies</a></li>
-                        <li>&#8250; <a href="">Add Supplies</a></li>
-                        <li>&#8250; <a href="">View supplies</a></li>
+        <div class="right">
+            <div class="align-right">
 
-                    </ul>
-                </li>
-                <li class="upp"><a href="#">Manage Users</a>
-                    <ul>
-                        <li>&#8250; <a ng-click="showUsers()">Show Users</a></li>
-                        <li>&#8250; <a ng-click="redirectTomakeAdmin()">Make Manager Admin</a></li>
-                        <li>&#8250; <a ng-click="redirectToAuthorizeManager()">Validate Manager</a></li>
-
-                    </ul>
-                </li>
-                <li class="upp"><a href="#">Settings</a>
-                    <ul>
-                        <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
-                    </ul>
-                </li>
-            </ul>
+            </div>
         </div>
     </div>
+    <div id="nav" style="margin-top: 10px;">
+        <ul>
+            <li class="upp"><a href="#">DashBoard</a>
+                <ul>
 
+                    <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                </ul   >
+            </li>
+            <li class="upp"><a href="#">Manage Supplies</a>
+                <ul>
+                    <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
+                    <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
+
+
+                </ul>
+            </li>
+
+            <li class="upp"><a href="#">Settings</a>
+                <ul>
+                    <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <div id="content">
         <table>
             <tr>

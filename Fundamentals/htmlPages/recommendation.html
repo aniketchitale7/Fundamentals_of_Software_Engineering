@@ -13,7 +13,7 @@
 <body>
 <div id="header">
     <div id="top">
-        <div class="left">
+        <div class="middle">
             <p>Welcome, <strong>{{user_name}}.</strong> [ <a href="logout.jsp">logout</a> ]</p>
         </div>
         <div class="right">
@@ -24,9 +24,9 @@
     </div>
     <div id="nav" style="margin-top: 10px;">
         <ul>
-            <li class="upp"><a href="#">DashBoard1</a>
+            <li class="upp"><a href="#">DashBoard</a>
                 <ul>
-                    <li>&#8250; <a href="#">View Messages</a></li>
+
                     <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
 
                 </ul   >
@@ -34,19 +34,12 @@
             <li class="upp"><a href="#">Manage Supplies</a>
                 <ul>
                     <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
-                    <li>&#8250; <a href="#">View supplies</a></li>
                     <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
 
 
                 </ul>
             </li>
-            <li class="upp"><a href="#">Users</a>
-                <ul>
-                    <li>&#8250; <a href="#">Show all uses</a></li>
-                    <li>&#8250; <a href="#">Delete user</a></li>
 
-                </ul>
-            </li>
             <li class="upp"><a href="#">Settings</a>
                 <ul>
                     <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
@@ -59,7 +52,7 @@
     <div class="" style="margin-top:90px;">
         <div class="col-lg-8">
             <div class="page-header">
-                <h2 id="tables"> Recommendation Items for Replacement</h2>
+                <h4 id="tables"> Product asked for return is out of Stock , Please select from below product for replacement</h4>
             </div>
             <div class="bs-component">
                 <form class="form-inline">
