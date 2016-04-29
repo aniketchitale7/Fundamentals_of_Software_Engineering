@@ -38,10 +38,14 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
                       console.log("Manager" + user_authentication[0].designation );
                       $location.path('/managerPage');
                   }
-                  else
+                  else if(user_authentication[0].designationId == "Authorized")
                   {
                       console.log("User Auth" + user_authentication[0].designation );
                       $location.path('/userPage');
+                  }
+                    else
+                  {
+                      $scope.message = "Please Authenticate your Email Address";
                   }
 
 
@@ -57,7 +61,10 @@ app.controller("loginCtrl", function(md5, $http, $scope, $rootScope, uuid2, $loc
         });
     }
 
+    $scope.cancel = function(){
 
+        $location.path('/');
+    }
 
     $scope.redirectToCreateAccountPage = function(){
         $location.path('/create_account');

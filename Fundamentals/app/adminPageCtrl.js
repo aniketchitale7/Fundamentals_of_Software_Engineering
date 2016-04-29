@@ -35,6 +35,12 @@ app.controller("adminPageCtrl", function($scope, $rootScope, $http, $location, $
 
     }
 
+    $scope.logout = function(){
+        $cookieStore.remove("session");
+        $location.path('/');
+    }
+
+
     $scope.updateInfo = function(){
         $location.path('/userInfo');
 
