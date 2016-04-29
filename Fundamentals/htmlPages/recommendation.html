@@ -14,7 +14,7 @@
 <div id="header">
     <div id="top">
         <div class="middle">
-            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href="logout.jsp">logout</a> ]</p>
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
         </div>
         <div class="right">
             <div class="align-right">
@@ -24,14 +24,14 @@
     </div>
     <div id="nav" style="margin-top: 10px;">
         <ul>
-            <li class="upp"><a href="#">DashBoard</a>
+            <li class="upp">DashBoard
                 <ul>
 
                     <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
 
                 </ul   >
             </li>
-            <li class="upp"><a href="#">Manage Supplies</a>
+            <li class="upp">Manage Supplies
                 <ul>
                     <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
                     <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
@@ -40,7 +40,7 @@
                 </ul>
             </li>
 
-            <li class="upp"><a href="#">Settings</a>
+            <li class="upp">Settings
                 <ul>
                     <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
                 </ul>

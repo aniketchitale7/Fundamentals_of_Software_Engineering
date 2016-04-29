@@ -13,7 +13,7 @@
 <div id="header">
     <div id="top">
         <div class="middle">
-            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href="logout.jsp">logout</a> ]</p>
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
         </div>
         <div class="right">
             <div class="align-right">
@@ -23,7 +23,7 @@
     </div>
     <div id="nav" style="margin-top: 10px;">
         <ul>
-            <li class="upp"><a href="#">DashBoard</a>
+            <li class="upp">DashBoard</a>
                 <ul>
 
                     <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
@@ -39,7 +39,7 @@
                 </ul>
             </li>
 
-            <li class="upp"><a href="#">Settings</a>
+            <li class="upp">Settings
                 <ul>
                     <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
                 </ul>
@@ -52,7 +52,7 @@
         <div class="col-lg-8">
             <div class="page-header">
                 <h2 id="tables"> Welcome {{name}}</h2>
-                <h3 id="tables"> Past Transaction / Return Items {{name}}</h3>
+                <h3 > Past Transaction / Return Items {{name}}</h3>
             </div>
             <div class="bs-component">
                 <form class="form-inline">
